@@ -25,6 +25,7 @@ Route::view('profile', 'profile')
 
 Route::middleware(['auth'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
+    // Transactions
     Route::get('/transactions', function () {
         return view('transactions.index');
     })->name('transactions.index');
@@ -38,6 +39,13 @@ Route::middleware(['auth'])->group(function () {
         }
         return view('transactions.show', compact('transaction'));
     })->name('transactions.show');
+    // Accounts
+    Route::get('/accounts', function () {
+        return view('accounts.index');
+    })->name('accounts.index');
+    Route::get('/accounts/import', function () {
+        return view('accounts.imports');
+    })->name('accounts.import');
 });
 
 require __DIR__ . '/auth.php';
